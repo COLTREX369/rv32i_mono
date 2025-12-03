@@ -9,12 +9,12 @@ module dm (
 );
 
     // Memoria de 1 KiB (1024 bytes) - igual que segmentado
-    (* ramstyle = "M10K" *) logic [7:0] mem [0:1023];
+    (* ramstyle = "M10K" *) logic [7:0] mem [0:256];
 
     // Inicializar memoria a 0 (compatible con síntesis FPGA)
     integer i;
     initial begin
-        for (i = 0; i < 1024; i = i + 1) begin
+        for (i = 0; i < 256; i = i + 1) begin
             mem[i] = 8'h00;
         end
     end

@@ -1,3 +1,4 @@
+
 module monociclo (
     input  logic        clk,              // Reloj del sistema
     input  logic        reset,            // Reset del sistema
