@@ -1,0 +1,844 @@
+Analysis & Synthesis report for rv32i_fpga
+Tue Dec  2 21:06:35 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: debouncer:debouncer_key0
+ 13. Parameter Settings for User Entity Instance: debouncer:debouncer_key1
+ 14. Parameter Settings for User Entity Instance: clock_divider:clk_div_1sec
+ 15. Port Connectivity Checks: "monociclo:cpu"
+ 16. Port Connectivity Checks: "edge_detector:edge_det_key1"
+ 17. Port Connectivity Checks: "debouncer:debouncer_key1"
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Dec  2 21:06:34 2025          ;
+; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                   ; rv32i_fpga                                     ;
+; Top-level Entity Name           ; fpga_top                                       ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 3203                                           ;
+; Total pins                      ; 67                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; fpga_top           ; rv32i_fpga         ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                 ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                             ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
+; ../src/sum.sv                    ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/sum.sv           ;         ;
+; ../src/ru.sv                     ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/ru.sv            ;         ;
+; ../src/pc.sv                     ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/pc.sv            ;         ;
+; ../src/muxrudata.sv              ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/muxrudata.sv     ;         ;
+; ../src/muxnextpc.sv              ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/muxnextpc.sv     ;         ;
+; ../src/muxaluB.sv                ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/muxaluB.sv       ;         ;
+; ../src/muxaluA.sv                ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/muxaluA.sv       ;         ;
+; ../src/monociclo.sv              ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv     ;         ;
+; ../src/immgen.sv                 ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/immgen.sv        ;         ;
+; ../src/im.sv                     ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/im.sv            ;         ;
+; ../src/hex_display_6.sv          ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/hex_display_6.sv ;         ;
+; ../src/hex_decoder.sv            ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/hex_decoder.sv   ;         ;
+; ../src/fpga_top.sv               ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv      ;         ;
+; ../src/edge_detector.sv          ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/edge_detector.sv ;         ;
+; ../src/dm.sv                     ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/dm.sv            ;         ;
+; ../src/debouncer.sv              ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/debouncer.sv     ;         ;
+; ../src/cu.sv                     ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/cu.sv            ;         ;
+; ../src/clock_divider.sv          ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/clock_divider.sv ;         ;
+; ../src/bru.sv                    ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/bru.sv           ;         ;
+; ../src/alu.sv                    ; yes             ; User SystemVerilog HDL File  ; P:/arquitectura de computadores/proyecto/rv32i_mono/src/alu.sv           ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++---------------------------------------------+---------+
+; Resource                                    ; Usage   ;
++---------------------------------------------+---------+
+; Estimate of Logic utilization (ALMs needed) ; 5070    ;
+;                                             ;         ;
+; Combinational ALUT usage for logic          ; 6062    ;
+;     -- 7 input functions                    ; 45      ;
+;     -- 6 input functions                    ; 3923    ;
+;     -- 5 input functions                    ; 929     ;
+;     -- 4 input functions                    ; 388     ;
+;     -- <=3 input functions                  ; 777     ;
+;                                             ;         ;
+; Dedicated logic registers                   ; 3203    ;
+;                                             ;         ;
+; I/O pins                                    ; 67      ;
+;                                             ;         ;
+; Total DSP Blocks                            ; 0       ;
+;                                             ;         ;
+; Maximum fan-out node                        ; cpu_clk ;
+; Maximum fan-out                             ; 3081    ;
+; Total fan-out                               ; 41912   ;
+; Average fan-out                             ; 4.46    ;
++---------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                 ;
++----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node       ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                      ; Entity Name   ; Library Name ;
++----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+---------------+--------------+
+; |fpga_top                        ; 6062 (280)          ; 3203 (42)                 ; 0                 ; 0          ; 67   ; 0            ; |fpga_top                                                ; fpga_top      ; work         ;
+;    |clock_divider:clk_div_1sec|  ; 40 (40)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|clock_divider:clk_div_1sec                     ; clock_divider ; work         ;
+;    |debouncer:debouncer_key0|    ; 28 (28)             ; 23 (23)                   ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|debouncer:debouncer_key0                       ; debouncer     ; work         ;
+;    |debouncer:debouncer_key1|    ; 27 (27)             ; 23 (23)                   ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|debouncer:debouncer_key1                       ; debouncer     ; work         ;
+;    |edge_detector:edge_det_key0| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|edge_detector:edge_det_key0                    ; edge_detector ; work         ;
+;    |edge_detector:edge_det_key1| ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|edge_detector:edge_det_key1                    ; edge_detector ; work         ;
+;    |hex_display_6:hex_display|   ; 42 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|hex_display_6:hex_display                      ; hex_display_6 ; work         ;
+;       |hex_decoder:decoder0|     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|hex_display_6:hex_display|hex_decoder:decoder0 ; hex_decoder   ; work         ;
+;       |hex_decoder:decoder1|     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|hex_display_6:hex_display|hex_decoder:decoder1 ; hex_decoder   ; work         ;
+;       |hex_decoder:decoder2|     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|hex_display_6:hex_display|hex_decoder:decoder2 ; hex_decoder   ; work         ;
+;       |hex_decoder:decoder3|     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|hex_display_6:hex_display|hex_decoder:decoder3 ; hex_decoder   ; work         ;
+;       |hex_decoder:decoder4|     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|hex_display_6:hex_display|hex_decoder:decoder4 ; hex_decoder   ; work         ;
+;       |hex_decoder:decoder5|     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|hex_display_6:hex_display|hex_decoder:decoder5 ; hex_decoder   ; work         ;
+;    |monociclo:cpu|               ; 5644 (0)            ; 3080 (0)                  ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu                                  ; monociclo     ; work         ;
+;       |alu:u_alu|                ; 433 (433)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|alu:u_alu                        ; alu           ; work         ;
+;       |bru:u_bru|                ; 53 (53)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|bru:u_bru                        ; bru           ; work         ;
+;       |cu:u_cu|                  ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|cu:u_cu                          ; cu            ; work         ;
+;       |dm:u_dm|                  ; 4176 (4176)         ; 2056 (2056)               ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|dm:u_dm                          ; dm            ; work         ;
+;       |im:u_im|                  ; 70 (70)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|im:u_im                          ; im            ; work         ;
+;       |muxaluA:u_muxaluA|        ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|muxaluA:u_muxaluA                ; muxaluA       ; work         ;
+;       |muxaluB:u_muxaluB|        ; 58 (58)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|muxaluB:u_muxaluB                ; muxaluB       ; work         ;
+;       |muxnextpc:u_muxnextpc|    ; 34 (34)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|muxnextpc:u_muxnextpc            ; muxnextpc     ; work         ;
+;       |muxrudata:u_muxrudata|    ; 191 (191)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|muxrudata:u_muxrudata            ; muxrudata     ; work         ;
+;       |pc:u_pc|                  ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|pc:u_pc                          ; pc            ; work         ;
+;       |ru:u_ru|                  ; 550 (550)           ; 992 (992)                 ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|ru:u_ru                          ; ru            ; work         ;
+;       |sum:u_sum|                ; 30 (30)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fpga_top|monociclo:cpu|sum:u_sum                        ; sum           ; work         ;
++----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                   ;
++----------------------------------------+---------------------------------------------+
+; Register name                          ; Reason for Removal                          ;
++----------------------------------------+---------------------------------------------+
+; monociclo:cpu|ru:u_ru|RU[0][4]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][1]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][0]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][2]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][3]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][18]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][20]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][19]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][21]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][22]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][24]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][23]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][25]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][26]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][28]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][27]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][29]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][30]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][31]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][5]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][6]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][8]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][7]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][9]         ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][10]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][12]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][11]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][13]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][14]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][16]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][15]        ; Stuck at GND due to stuck port clock_enable ;
+; monociclo:cpu|ru:u_ru|RU[0][17]        ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 32 ;                                             ;
++----------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 3203  ;
+; Number of registers using Synchronous Clear  ; 117   ;
+; Number of registers using Synchronous Load   ; 17    ;
+; Number of registers using Asynchronous Clear ; 67    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 3056  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; reset_triggered                        ; 42      ;
+; debouncer:debouncer_key0|button_out    ; 6       ;
+; edge_detector:edge_det_key0|signal_d   ; 3       ;
+; debouncer:debouncer_key0|button_sync_1 ; 2       ;
+; debouncer:debouncer_key0|button_sync_0 ; 1       ;
+; Total number of inverted registers = 5 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |fpga_top|manual_clock_counter[4]                   ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |fpga_top|manual_clock_counter[3]                   ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |fpga_top|debouncer:debouncer_key1|counter[9]       ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |fpga_top|debouncer:debouncer_key0|counter[19]      ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[0][5]           ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[1][6]           ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[2][4]           ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[256][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[255][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[254][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[253][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[252][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[251][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[250][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[249][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[248][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[247][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[246][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[245][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[244][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[243][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[242][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[241][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[240][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[239][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[238][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[237][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[236][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[235][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[234][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[233][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[232][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[231][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[230][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[229][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[228][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[227][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[226][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[225][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[224][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[223][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[222][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[221][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[220][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[219][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[218][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[217][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[216][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[215][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[214][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[213][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[212][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[211][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[210][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[209][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[208][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[207][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[206][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[205][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[204][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[203][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[202][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[201][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[200][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[199][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[198][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[197][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[196][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[195][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[194][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[193][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[192][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[191][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[190][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[189][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[188][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[187][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[186][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[185][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[184][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[183][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[182][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[181][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[180][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[179][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[178][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[177][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[176][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[175][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[174][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[173][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[172][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[171][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[170][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[169][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[168][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[167][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[166][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[165][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[164][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[163][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[162][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[161][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[160][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[159][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[158][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[157][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[156][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[155][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[154][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[153][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[152][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[151][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[150][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[149][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[148][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[147][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[146][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[145][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[144][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[143][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[142][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[141][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[140][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[139][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[138][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[137][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[136][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[135][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[134][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[133][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[132][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[131][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[130][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[129][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[128][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[127][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[126][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[125][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[124][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[123][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[122][7]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[121][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[120][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[119][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[118][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[117][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[116][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[115][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[114][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[113][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[112][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[111][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[110][1]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[109][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[108][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[107][5]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[106][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[105][4]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[104][0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[103][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[102][2]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[101][3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[100][6]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[99][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[98][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[97][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[96][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[95][5]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[94][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[93][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[92][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[91][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[90][5]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[89][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[88][2]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[87][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[86][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[85][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[84][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[83][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[82][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[81][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[80][2]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[79][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[78][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[77][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[76][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[75][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[74][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[73][5]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[72][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[71][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[70][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[69][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[68][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[67][5]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[66][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[65][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[64][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[63][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[62][2]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[61][2]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[60][2]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[59][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[58][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[57][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[56][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[55][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[54][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[53][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[52][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[51][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[50][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[49][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[48][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[47][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[46][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[45][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[44][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[43][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[42][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[41][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[40][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[39][2]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[38][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[37][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[36][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[35][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[34][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[33][5]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[32][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[31][5]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[30][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[29][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[28][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[27][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[26][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[25][4]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[24][2]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[23][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[22][2]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[21][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[20][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[19][5]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[18][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[17][0]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[16][1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[15][7]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[14][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[13][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[12][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[11][3]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[10][6]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[9][7]           ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[8][5]           ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[7][5]           ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[6][7]           ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[5][5]           ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[4][6]           ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |fpga_top|monociclo:cpu|dm:u_dm|mem[3][2]           ;
+; 20:1               ; 13 bits   ; 169 LEs       ; 156 LEs              ; 13 LEs                 ; Yes        ; |fpga_top|display_data[15]                          ;
+; 21:1               ; 6 bits    ; 84 LEs        ; 78 LEs               ; 6 LEs                  ; Yes        ; |fpga_top|display_data[24]                          ;
+; 22:1               ; 4 bits    ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |fpga_top|display_data[10]                          ;
+; 22:1               ; 3 bits    ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; Yes        ; |fpga_top|display_data[3]                           ;
+; 23:1               ; 2 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; Yes        ; |fpga_top|display_data[1]                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|ShiftLeft0        ;
+; 4:1                ; 49 bits   ; 98 LEs        ; 98 LEs               ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|ShiftRight1       ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|ShiftRight0       ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|ShiftRight1       ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|ShiftLeft0        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|ShiftLeft0        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|ShiftLeft0        ;
+; 4:1                ; 72 bits   ; 144 LEs       ; 144 LEs              ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|dm:u_dm|Mux0                ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|muxaluB:u_muxaluB|aluB[15]  ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; No         ; |fpga_top|monociclo:cpu|muxaluB:u_muxaluB|aluB[9]   ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; No         ; |fpga_top|monociclo:cpu|muxaluB:u_muxaluB|aluB[20]  ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|ru:u_ru|Mux30               ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|ru:u_ru|Mux55               ;
+; 11:1               ; 16 bits   ; 112 LEs       ; 96 LEs               ; 16 LEs                 ; No         ; |fpga_top|monociclo:cpu|dm:u_dm|Mux0                ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|muxrudata:u_muxrudata|Mux14 ;
+; 10:1               ; 7 bits    ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|muxrudata:u_muxrudata|Mux17 ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 72 LEs               ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|dm:u_dm|Mux2                ;
+; 16:1               ; 24 bits   ; 240 LEs       ; 240 LEs              ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|dm:u_dm|Mux0                ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|dm:u_dm|Mux5                ;
+; 19:1               ; 8 bits    ; 96 LEs        ; 88 LEs               ; 8 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|Mux9              ;
+; 18:1               ; 5 bits    ; 60 LEs        ; 50 LEs               ; 10 LEs                 ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|Mux24             ;
+; 18:1               ; 3 bits    ; 36 LEs        ; 30 LEs               ; 6 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|Mux18             ;
+; 20:1               ; 2 bits    ; 26 LEs        ; 22 LEs               ; 4 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|Mux21             ;
+; 22:1               ; 3 bits    ; 42 LEs        ; 39 LEs               ; 3 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|Mux3              ;
+; 21:1               ; 2 bits    ; 28 LEs        ; 24 LEs               ; 4 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|Mux6              ;
+; 21:1               ; 3 bits    ; 42 LEs        ; 36 LEs               ; 6 LEs                  ; No         ; |fpga_top|monociclo:cpu|alu:u_alu|Mux28             ;
+; 22:1               ; 7 bits    ; 98 LEs        ; 98 LEs               ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|muxrudata:u_muxrudata|Mux25 ;
+; 26:1               ; 8 bits    ; 136 LEs       ; 136 LEs              ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|muxrudata:u_muxrudata|Mux6  ;
+; 32:1               ; 16 bits   ; 336 LEs       ; 336 LEs              ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|dm:u_dm|Mux4                ;
+; 33:1               ; 8 bits    ; 176 LEs       ; 176 LEs              ; 0 LEs                  ; No         ; |fpga_top|monociclo:cpu|dm:u_dm|Mux4                ;
+; 66:1               ; 8 bits    ; 352 LEs       ; 344 LEs              ; 8 LEs                  ; No         ; |fpga_top|monociclo:cpu|dm:u_dm|Mux2                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: debouncer:debouncer_key0 ;
++----------------+---------+--------------------------------------------+
+; Parameter Name ; Value   ; Type                                       ;
++----------------+---------+--------------------------------------------+
+; DEBOUNCE_TIME  ; 1000000 ; Signed Integer                             ;
++----------------+---------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: debouncer:debouncer_key1 ;
++----------------+---------+--------------------------------------------+
+; Parameter Name ; Value   ; Type                                       ;
++----------------+---------+--------------------------------------------+
+; DEBOUNCE_TIME  ; 1000000 ; Signed Integer                             ;
++----------------+---------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clock_divider:clk_div_1sec ;
++----------------+----------+---------------------------------------------+
+; Parameter Name ; Value    ; Type                                        ;
++----------------+----------+---------------------------------------------+
+; DIVIDER        ; 50000000 ; Signed Integer                              ;
++----------------+----------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "monociclo:cpu"                                                                                     ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                ; Type   ; Severity ; Details                                                                             ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+; debug_dm_word[4..7] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "edge_detector:edge_det_key1" ;
++------+-------+----------+-------------------------------+
+; Port ; Type  ; Severity ; Details                       ;
++------+-------+----------+-------------------------------+
+; rst  ; Input ; Info     ; Stuck at GND                  ;
++------+-------+----------+-------------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "debouncer:debouncer_key1" ;
++------+-------+----------+----------------------------+
+; Port ; Type  ; Severity ; Details                    ;
++------+-------+----------+----------------------------+
+; rst  ; Input ; Info     ; Stuck at GND               ;
++------+-------+----------+----------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 3203                        ;
+;     CLR               ; 6                           ;
+;     CLR SCLR          ; 52                          ;
+;     CLR SLD           ; 1                           ;
+;     ENA               ; 3040                        ;
+;     ENA CLR SLD       ; 8                           ;
+;     ENA SLD           ; 8                           ;
+;     SCLR              ; 65                          ;
+;     plain             ; 23                          ;
+; arriav_lcell_comb     ; 6068                        ;
+;     arith             ; 143                         ;
+;         1 data inputs ; 110                         ;
+;         3 data inputs ; 1                           ;
+;         5 data inputs ; 32                          ;
+;     extend            ; 45                          ;
+;         7 data inputs ; 45                          ;
+;     normal            ; 5880                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 175                         ;
+;         3 data inputs ; 489                         ;
+;         4 data inputs ; 388                         ;
+;         5 data inputs ; 897                         ;
+;         6 data inputs ; 3923                        ;
+; boundary_port         ; 67                          ;
+;                       ;                             ;
+; Max LUT depth         ; 17.00                       ;
+; Average LUT depth     ; 12.01                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:03:12     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Tue Dec  2 21:02:44 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off rv32i_fpga -c rv32i_fpga
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/sum.sv
+    Info (12023): Found entity 1: sum File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/sum.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/ru.sv
+    Info (12023): Found entity 1: ru File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/ru.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/pc.sv
+    Info (12023): Found entity 1: pc File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/pc.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/muxrudata.sv
+    Info (12023): Found entity 1: muxrudata File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/muxrudata.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/muxnextpc.sv
+    Info (12023): Found entity 1: muxnextpc File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/muxnextpc.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/muxalub.sv
+    Info (12023): Found entity 1: muxaluB File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/muxaluB.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/muxalua.sv
+    Info (12023): Found entity 1: muxaluA File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/muxaluA.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv
+    Info (12023): Found entity 1: monociclo File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/immgen.sv
+    Info (12023): Found entity 1: immgen File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/immgen.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/im.sv
+    Info (12023): Found entity 1: im File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/im.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/hex_display_6.sv
+    Info (12023): Found entity 1: hex_display_6 File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/hex_display_6.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/hex_decoder.sv
+    Info (12023): Found entity 1: hex_decoder File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/hex_decoder.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv
+    Info (12023): Found entity 1: fpga_top File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/edge_detector.sv
+    Info (12023): Found entity 1: edge_detector File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/edge_detector.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/dm.sv
+    Info (12023): Found entity 1: dm File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/dm.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/debouncer.sv
+    Info (12023): Found entity 1: debouncer File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/debouncer.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/cu.sv
+    Info (12023): Found entity 1: cu File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/cu.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/clock_divider.sv
+    Info (12023): Found entity 1: clock_divider File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/clock_divider.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/bru.sv
+    Info (12023): Found entity 1: bru File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/bru.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /arquitectura de computadores/proyecto/rv32i_mono/src/alu.sv
+    Info (12023): Found entity 1: alu File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/alu.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rv32i_fpga_top.sv
+    Info (12023): Found entity 1: rv32i_fpga_top File: P:/arquitectura de computadores/proyecto/rv32i_mono/quartus/rv32i_fpga_top.sv Line: 1
+Info (12127): Elaborating entity "fpga_top" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at fpga_top.sv(143): truncated value with size 32 to match size of target (8) File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 143
+Info (12128): Elaborating entity "debouncer" for hierarchy "debouncer:debouncer_key0" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 85
+Info (12128): Elaborating entity "edge_detector" for hierarchy "edge_detector:edge_det_key0" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 103
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:clk_div_1sec" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 125
+Info (12128): Elaborating entity "monociclo" for hierarchy "monociclo:cpu" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 201
+Info (12128): Elaborating entity "pc" for hierarchy "monociclo:cpu|pc:u_pc" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 101
+Info (12128): Elaborating entity "sum" for hierarchy "monociclo:cpu|sum:u_sum" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 107
+Info (12128): Elaborating entity "im" for hierarchy "monociclo:cpu|im:u_im" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 113
+Warning (10030): Net "mem.data_a" at im.sv(7) has no driver or initial value, using a default initial value '0' File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/im.sv Line: 7
+Warning (10030): Net "mem.waddr_a" at im.sv(7) has no driver or initial value, using a default initial value '0' File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/im.sv Line: 7
+Warning (10030): Net "mem.we_a" at im.sv(7) has no driver or initial value, using a default initial value '0' File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/im.sv Line: 7
+Info (12128): Elaborating entity "cu" for hierarchy "monociclo:cpu|cu:u_cu" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 129
+Info (12128): Elaborating entity "ru" for hierarchy "monociclo:cpu|ru:u_ru" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 148
+Info (12128): Elaborating entity "immgen" for hierarchy "monociclo:cpu|immgen:u_immgen" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 155
+Info (12128): Elaborating entity "muxaluA" for hierarchy "monociclo:cpu|muxaluA:u_muxaluA" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 163
+Info (12128): Elaborating entity "muxaluB" for hierarchy "monociclo:cpu|muxaluB:u_muxaluB" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 171
+Info (12128): Elaborating entity "bru" for hierarchy "monociclo:cpu|bru:u_bru" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 179
+Info (12128): Elaborating entity "alu" for hierarchy "monociclo:cpu|alu:u_alu" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 187
+Info (12128): Elaborating entity "muxnextpc" for hierarchy "monociclo:cpu|muxnextpc:u_muxnextpc" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 195
+Info (12128): Elaborating entity "dm" for hierarchy "monociclo:cpu|dm:u_dm" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 206
+Warning (10855): Verilog HDL warning at dm.sv(16): initial value for variable mem should be constant File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/dm.sv Line: 16
+Info (12128): Elaborating entity "muxrudata" for hierarchy "monociclo:cpu|muxrudata:u_muxrudata" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/monociclo.sv Line: 215
+Info (12128): Elaborating entity "hex_display_6" for hierarchy "hex_display_6:hex_display" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 254
+Info (12128): Elaborating entity "hex_decoder" for hierarchy "hex_display_6:hex_display|hex_decoder:decoder0" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/hex_display_6.sv Line: 12
+Warning (19016): Clock multiplexers are found and protected
+    Warning (19017): Found clock multiplexer cpu_clk File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 28
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 12
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[2]" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 6
+    Warning (15610): No output dependent on input pin "KEY[3]" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 6
+    Warning (15610): No output dependent on input pin "SW[7]" File: P:/arquitectura de computadores/proyecto/rv32i_mono/src/fpga_top.sv Line: 9
+Info (21057): Implemented 7170 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 7103 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 4870 megabytes
+    Info: Processing ended: Tue Dec  2 21:06:35 2025
+    Info: Elapsed time: 00:03:51
+    Info: Total CPU time (on all processors): 00:03:17
+
+
